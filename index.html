@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PURE&CO — Suplementos Premium Importados USA | Certificación IFOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1410;
+    --bg-soft: #131c17;
+    --cream: #f5f0e6;
+    --cream-soft: #ebe4d4;
+    --forest: #1f3a2e;
+    --moss: #4a6b54;
+    --gold: #c9a55c;
+    --gold-soft: #d9b878;
+    --ink: #0a0f0c;
+    --muted: #8a9690;
+    --line: rgba(245, 240, 230, 0.12);
+    --whatsapp: #25D366;
+    --display: 'Fraunces', serif;
+    --body: 'Manrope', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  .cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring.hover {
+    width: 64px; height: 64px;
+    background: rgba(201, 165, 92, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--whatsapp);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    cursor: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: wabounce 2s ease-in-out infinite;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 50px rgba(37, 211, 102, 0.6);
+  }
+  .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+  .whatsapp-float::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid var(--whatsapp);
+    border-radius: 50%;
+    animation: waring 2s ease-out infinite;
+  }
+  @keyframes waring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  @keyframes wabounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .whatsapp-float .label {
+    position: absolute;
+    right: 80px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.6rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+    border: 1px solid var(--gold);
+  }
+  .whatsapp-float:hover .label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(13, 20, 16, 0.85);
+    backdrop-filter: blur(20px);
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+  .logo span { color: var(--gold); font-style: normal; font-weight: 700; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .cart-btn {
+    background: var(--whatsapp);
+    border: none;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    font-family: var(--body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: none;
+    transition: all 0.3s;
+    border-radius: 100px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cart-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+  .cart-btn svg { width: 16px; height: 16px; fill: white; }
+
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(74, 107, 84, 0.4), transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 30px) scale(1.1); }
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  h1.hero-title {
+    font-family: var(--display);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+  h1.hero-title .italic {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+  h1.hero-title .line { display: block; overflow: hidden; }
+  h1.hero-title .line span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: revealUp 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  h1.hero-title .line:nth-child(1) span { animation-delay: 0.3s; }
+  h1.hero-title .line:nth-child(2) span { animation-delay: 0.45s; }
+  h1.hero-title .line:nth-child(3) span { animation-delay: 0.6s; }
+  @keyframes revealUp { to { transform: translateY(0); } }
+
+  .hero-text {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+  .btn-primary {
+    background: var(--whatsapp);
+    color: white;
+    border: none;
+    padding: 1.1rem 2.2rem;
+    font-family: var(--body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: none;
+    border-radius: 100px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+  }
+  .btn-primary svg { width: 18px; height: 18px; fill: white; }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--cream);
+    padding: 1.1rem 2.2rem;
+    font-family: var(--body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: none;
+    border-radius: 100px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottle {
+    width: 300px;
+    height: 480px;
+    position: relative;
+    animation: bottleFloat 6s ease-in-out infinite;
+  }
+  @keyframes bottleFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  .bottle-cap {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 140px; height: 60px;
+    background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+    border-radius: 8px 8px 4px 4px;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.5);
+  }
+  .bottle-body {
+    position: absolute;
+    top: 55px; left: 50%;
+    transform: translateX(-50%);
+    width: 240px; height: 420px;
+    background: linear-gradient(135deg, #1f3a2e 0%, #2d5440 50%, #1f3a2e 100%);
+    border-radius: 20px;
+    box-shadow:
+      inset 20px 0 40px rgba(255, 255, 255, 0.05),
+      inset -20px 0 40px rgba(0, 0, 0, 0.3),
+      0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  .bottle-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%;
+    width: 6px; height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+  .bottle-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    color: var(--cream);
+    font-family: var(--display);
+  }
+  .bottle-label .brand {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .bottle-label .name {
+    font-size: 1.6rem;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .bottle-label .desc {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--body);
+    margin-top: 1.5rem;
+  }
+  .bottle-label .ifos {
+    margin-top: 2rem;
+    width: 50px; height: 50px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-family: var(--body);
+    line-height: 1;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .bottle-label .ifos .stars { font-size: 0.8rem; }
+
+  .floating-tag {
+    position: absolute;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 0.7rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: tagFloat 4s ease-in-out infinite;
+  }
+  .tag-1 { top: 15%; right: -10%; animation-delay: 0s; }
+  .tag-2 { bottom: 20%; left: -15%; animation-delay: 1s; }
+  .tag-3 { top: 50%; right: -15%; animation-delay: 2s; }
+  @keyframes tagFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .marquee {
+    padding: 3rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--bg-soft);
+  }
+  .marquee-inner {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  .marquee-item::after {
+    content: '✦';
+    color: var(--gold);
+    font-style: normal;
+  }
+  @keyframes scroll {
+    to { transform: translateX(-50%); }
+  }
+
+  section { padding: 8rem 3rem; position: relative; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    position: relative;
+  }
+  .section-label::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 1.5rem; height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+  .products-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: end;
+  }
+  .products-intro { color: var(--muted); max-width: 460px; }
+  .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
+  .product-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+    cursor: none;
+    opacity: 0;
+    transform: translateY(40px);
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card.in-view { opacity: 1; transform: translateY(0); }
+  .product-card:hover { border-color: var(--gold); transform: translateY(-8px); }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(201, 165, 92, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .product-card:hover::before { opacity: 1; }
+
+  /* CARRUSEL */
+  .product-visual {
+    height: 360px;
+    background: linear-gradient(135deg, #f5f0e6 0%, #e8dfc8 100%);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-visual.variant-2 { background: linear-gradient(135deg, #e6f0e8 0%, #c8d8cc 100%); }
+  .product-visual.variant-3 { background: linear-gradient(135deg, #fff5d6 0%, #f0deaa 100%); }
+  .product-visual.variant-4 { background: linear-gradient(135deg, #f5e8d6 0%, #e8d2aa 100%); }
+
+  .carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .carousel-slide img {
+    max-width: 85%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .carousel-slide img {
+    transform: scale(1.05);
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px; height: 42px;
+    background: rgba(13, 20, 16, 0.85);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    backdrop-filter: blur(10px);
+  }
+  .carousel-arrow:hover {
+    background: var(--gold);
+    color: var(--ink);
+    transform: translateY(-50%) scale(1.1);
+  }
+  .carousel-arrow.prev { left: 1rem; }
+  .carousel-arrow.next { right: 1rem; }
+  .product-card:hover .carousel-arrow { opacity: 1; }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 5;
+    background: rgba(13, 20, 16, 0.5);
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+  }
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(245, 240, 230, 0.4);
+    cursor: none;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+  .carousel-dot.active {
+    background: var(--gold);
+    width: 22px;
+    border-radius: 100px;
+  }
+
+  .carousel-counter {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(13, 20, 16, 0.7);
+    color: var(--cream);
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.1em;
+    border: 1px solid var(--line);
+  }
+
+  .product-tag {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    z-index: 6;
+    border: 1px solid var(--gold);
+  }
+
+  .product-brand {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .product-name {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .product-name em { font-style: italic; font-weight: 400; }
+  .product-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .meta-chip {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    background: rgba(201, 165, 92, 0.1);
+    border: 1px solid rgba(201, 165, 92, 0.3);
+    color: var(--gold-soft);
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+    gap: 1rem;
+  }
+  .product-cta {
+    background: var(--whatsapp);
+    border: none;
+    color: white;
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    padding: 0.8rem 1.4rem;
+    border-radius: 100px;
+    text-decoration: none;
+    flex: 1;
+    justify-content: center;
+  }
+  .product-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  }
+  .product-cta svg { width: 16px; height: 16px; fill: white; }
+  .product-availability {
+    font-size: 0.75rem;
+    color: var(--moss);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+  .product-availability::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #6cb27e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* Placeholder bottle for products without photos yet */
+  .mini-bottle {
+    width: 110px;
+    height: 200px;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .product-card:hover .mini-bottle { transform: scale(1.08) rotate(-3deg); }
+  .mini-bottle .cap {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 55px; height: 24px;
+    background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+    border-radius: 4px 4px 2px 2px;
+  }
+  .mini-bottle .body {
+    position: absolute;
+    top: 22px; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 175px;
+    background: linear-gradient(135deg, var(--forest), #2d5440);
+    border-radius: 8px;
+    box-shadow: inset 8px 0 16px rgba(255,255,255,0.08), inset -8px 0 16px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--cream);
+  }
+  .mini-bottle .body .label-mini {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.2;
+  }
+  .photo-pending {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(13, 20, 16, 0.6);
+    color: var(--cream);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    z-index: 4;
+    border: 1px solid var(--line);
+  }
+  .visual-center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .cert {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 8rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert .section-label { color: var(--forest); }
+  .cert .section-label::before { background: var(--forest); }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .cert-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+  .cert-title em { font-style: italic; color: var(--forest); font-weight: 300; }
+  .cert-text {
+    color: #4a5550;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+  .cert-list { list-style: none; margin-top: 2rem; }
+  .cert-list li {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(10, 15, 12, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+  .cert-list li::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--forest);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cert-visual {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cert-circle {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-circle::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(245, 240, 230, 0.2);
+    border-radius: 50%;
+  }
+  .cert-stars {
+    color: var(--gold);
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+  .cert-big {
+    font-family: var(--display);
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .cert-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+  }
+  .cert-rotating {
+    position: absolute;
+    inset: -20px;
+    animation: rotate 30s linear infinite;
+  }
+  .cert-rotating svg { width: 100%; height: 100%; }
+  .cert-rotating text {
+    font-family: var(--body);
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    fill: var(--ink);
+    text-transform: uppercase;
+  }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .step {
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .step-num {
+    font-family: var(--display);
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.2em;
+  }
+  .step-icon {
+    width: 60px; height: 60px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: var(--gold);
+    transition: all 0.4s;
+  }
+  .step:hover .step-icon {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+    transform: rotate(15deg);
+  }
+  .step-title {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .step-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  .testimonial {
+    background: var(--bg-soft);
+    text-align: center;
+    padding: 10rem 3rem;
+  }
+  .testimonial-quote {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 400;
+    max-width: 1000px;
+    margin: 2rem auto;
+    letter-spacing: -0.02em;
+  }
+  .testimonial-quote em { font-style: italic; color: var(--gold); }
+  .testimonial-author {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    margin-top: 2rem;
+  }
+  .testimonial-cta { margin-top: 3rem; display: inline-flex; }
+
+  footer {
+    background: var(--ink);
+    padding: 5rem 3rem 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  .footer-brand h3 {
+    font-family: var(--display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .footer-brand p { color: var(--muted); max-width: 350px; font-size: 0.95rem; }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.8rem; }
+  .footer-col a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 968px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
+    .hero-visual { height: 50vh; }
+    .bottle { width: 220px; height: 360px; }
+    .bottle-cap { width: 100px; height: 45px; }
+    .bottle-body { width: 180px; height: 320px; top: 40px; }
+    section { padding: 5rem 1.5rem; }
+    .products-header { grid-template-columns: 1fr; gap: 2rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .floating-tag { display: none; }
+    .whatsapp-float { bottom: 1.5rem; right: 1.5rem; width: 56px; height: 56px; }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+    .carousel-arrow { opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+    .product-footer { flex-direction: column; align-items: stretch; }
+    .product-availability { justify-content: center; }
+    nav { padding: 0.8rem 1rem; }
+    .cart-btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<a href="https://wa.me/5491130372062?text=Hola!%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20suplementos%20Pure%20%26%20Co" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+  </svg>
+  <span class="label">Consultanos por WhatsApp</span>
+</a>
+
+<nav id="navbar">
+  <div class="logo">pure<span>&</span>co</div>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#certificacion">IFOS</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/5491130372062?text=Hola!%20Quiero%20hacer%20una%20consulta" target="_blank" class="cart-btn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+    </svg>
+    Comprar
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">Importados directo de USA</div>
+    <h1 class="hero-title">
+      <span class="line"><span>Suplementos</span></span>
+      <span class="line"><span class="italic">de pureza</span></span>
+      <span class="line"><span>certificada.</span></span>
+    </h1>
+    <p class="hero-text">
+      Selección curada de suplementos premium con certificación IFOS 5 estrellas.
+      Origen verificable, pureza máxima y resultados que se sienten desde la primera dosis.
+    </p>
+    <div class="hero-cta">
+      <a href="https://wa.me/5491130372062?text=Hola!%20Quiero%20ver%20el%20cat%C3%A1logo%20de%20Pure%20%26%20Co" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
+        Pedir por WhatsApp
+      </a>
+      <a href="#productos" class="btn-ghost">Ver Productos →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="bottle">
+      <div class="bottle-cap"></div>
+      <div class="bottle-body">
+        <div class="bottle-label">
+          <div class="brand">PURE & CO</div>
+          <div class="name">Omega 3<br>Wild Caught</div>
+          <div class="desc">90 caps · Alaska</div>
+          <div class="ifos">
+            <div class="stars">★★★★★</div>
+            IFOS
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="floating-tag tag-1">5★ IFOS Certified</div>
+    <div class="floating-tag tag-2">Wild Caught</div>
+    <div class="floating-tag tag-3">USA Direct</div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <div class="marquee-item">Doctor's Best</div>
+    <div class="marquee-item">Sports Research</div>
+    <div class="marquee-item">IFOS 5 Stars</div>
+    <div class="marquee-item">Wild Caught</div>
+    <div class="marquee-item">Made in USA</div>
+    <div class="marquee-item">Doctor's Best</div>
+    <div class="marquee-item">Sports Research</div>
+    <div class="marquee-item">IFOS 5 Stars</div>
+    <div class="marquee-item">Wild Caught</div>
+    <div class="marquee-item">Made in USA</div>
+  </div>
+</div>
+
+<section id="productos">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Catálogo</div>
+      <h2 class="section-title">Cuatro fórmulas.<br><em>Cero compromisos.</em></h2>
+    </div>
+    <p class="products-intro">
+      Cada producto es seleccionado a mano, importado directamente desde Estados Unidos
+      y respaldado por certificaciones de pureza reconocidas mundialmente.
+    </p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Producto 1: Magnesio - CON CARRUSEL -->
+    <div class="product-card">
+      <div class="product-tag">Best Seller</div>
+      <div class="product-visual">
+        <div class="carousel" data-carousel data-total="4">
+          <div class="carousel-counter"><span class="current">1</span> / 4</div>
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="images/magnesio-1.jpg" alt="Doctor's Best Magnesium - Frente"></div>
+            <div class="carousel-slide"><img src="images/magnesio-2.jpg" alt="Doctor's Best Magnesium - Información"></div>
+            <div class="carousel-slide"><img src="images/magnesio-3.jpg" alt="Doctor's Best Magnesium - Detalle"></div>
+            <div class="carousel-slide"><img src="images/magnesio-4.jpg" alt="Doctor's Best Magnesium - Etiqueta"></div>
+          </div>
+          <button class="carousel-arrow prev" data-prev aria-label="Anterior">‹</button>
+          <button class="carousel-arrow next" data-next aria-label="Siguiente">›</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" data-slide="0" aria-label="Foto 1"></button>
+            <button class="carousel-dot" data-slide="1" aria-label="Foto 2"></button>
+            <button class="carousel-dot" data-slide="2" aria-label="Foto 3"></button>
+            <button class="carousel-dot" data-slide="3" aria-label="Foto 4"></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-brand">Doctor's Best</div>
+      <h3 class="product-name">Magnesio <em>Glicinato</em></h3>
+      <p class="product-desc">Forma quelada TRAACS Albion para máxima absorción. Apoya el descanso, los músculos y el sistema nervioso.</p>
+      <div class="product-meta">
+        <span class="meta-chip">240 tabs</span>
+        <span class="meta-chip">TRAACS Albion</span>
+        <span class="meta-chip">100% Quelado</span>
+      </div>
+      <div class="product-footer">
+        <a href="https://wa.me/5491130372062?text=Hola!%20Me%20interesa%20comprar%20el%20*Magnesio%20Glicinato%20240%20tabs%20(TRAACS%20Albion)*.%20Me%20pod%C3%A9s%20pasar%20precio%20y%20coordinar%20la%20compra%3F" target="_blank" class="product-cta">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Consultar
+        </a>
+        <span class="product-availability">En stock</span>
+      </div>
+    </div>
+
+    <!-- Producto 2: Omega 3 - PLACEHOLDER -->
+    <div class="product-card">
+      <div class="product-tag">IFOS 5★</div>
+      <div class="product-visual variant-2">
+        <div class="visual-center">
+          <div class="mini-bottle">
+            <div class="cap"></div>
+            <div class="body">
+              <div class="label-mini">Sports<br>Research<br>Omega-3</div>
+            </div>
+          </div>
+        </div>
+        <div class="photo-pending">Fotos en camino</div>
+      </div>
+      <div class="product-brand">Sports Research</div>
+      <h3 class="product-name">Omega-3 <em>Alaska</em></h3>
+      <p class="product-desc">Aceite de pescado salvaje capturado en aguas de Alaska. Certificación IFOS 5 estrellas y MSC sostenible.</p>
+      <div class="product-meta">
+        <span class="meta-chip">90 caps</span>
+        <span class="meta-chip">IFOS 5★</span>
+        <span class="meta-chip">MSC Wild Caught</span>
+      </div>
+      <div class="product-footer">
+        <a href="https://wa.me/5491130372062?text=Hola!%20Me%20interesa%20comprar%20el%20*Omega-3%20Alaska%2090%20caps%20(IFOS%205%E2%98%85%2C%20MSC%2C%20Wild%20Caught)*.%20Me%20pod%C3%A9s%20pasar%20precio%20y%20coordinar%20la%20compra%3F" target="_blank" class="product-cta">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Consultar
+        </a>
+        <span class="product-availability">En stock</span>
+      </div>
+    </div>
+
+    <!-- Producto 3: Vitamina D3+K2 - PLACEHOLDER -->
+    <div class="product-card">
+      <div class="product-tag">Vegano</div>
+      <div class="product-visual variant-3">
+        <div class="visual-center">
+          <div class="mini-bottle">
+            <div class="cap"></div>
+            <div class="body">
+              <div class="label-mini">Sports<br>Research<br>D3 + K2</div>
+            </div>
+          </div>
+        </div>
+        <div class="photo-pending">Fotos en camino</div>
+      </div>
+      <div class="product-brand">Sports Research</div>
+      <h3 class="product-name">Vitamina <em>D3 + K2</em></h3>
+      <p class="product-desc">Fórmula vegana basada en plantas. Sinergia perfecta para huesos, sistema inmune y salud cardiovascular.</p>
+      <div class="product-meta">
+        <span class="meta-chip">60 caps</span>
+        <span class="meta-chip">5000 IU</span>
+        <span class="meta-chip">Plant-Based</span>
+      </div>
+      <div class="product-footer">
+        <a href="https://wa.me/5491130372062?text=Hola!%20Me%20interesa%20comprar%20la%20*Vitamina%20D3%2BK2%20Vegana%205000%20IU%2060%20caps%20(Plant-Based)*.%20Me%20pod%C3%A9s%20pasar%20precio%20y%20coordinar%20la%20compra%3F" target="_blank" class="product-cta">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Consultar
+        </a>
+        <span class="product-availability">En stock</span>
+      </div>
+    </div>
+
+    <!-- Producto 4: Multi Colágeno - PLACEHOLDER -->
+    <div class="product-card">
+      <div class="product-tag">Premium</div>
+      <div class="product-visual variant-4">
+        <div class="visual-center">
+          <div class="mini-bottle">
+            <div class="cap"></div>
+            <div class="body">
+              <div class="label-mini">Sports<br>Research<br>Multi<br>Collagen</div>
+            </div>
+          </div>
+        </div>
+        <div class="photo-pending">Fotos en camino</div>
+      </div>
+      <div class="product-brand">Sports Research</div>
+      <h3 class="product-name">Multi <em>Colágeno</em></h3>
+      <p class="product-desc">Cinco tipos de colágeno (I, II, III, V, X) con ácido hialurónico. Para piel, articulaciones y vitalidad integral.</p>
+      <div class="product-meta">
+        <span class="meta-chip">90 caps</span>
+        <span class="meta-chip">5 tipos</span>
+        <span class="meta-chip">+ Ácido Hialurónico</span>
+      </div>
+      <div class="product-footer">
+        <a href="https://wa.me/5491130372062?text=Hola!%20Me%20interesa%20comprar%20el%20*Multi%20Col%C3%A1geno%205%20tipos%2090%20caps%20(I%2CII%2CIII%2CV%2CX%20%2B%20AH)*.%20Me%20pod%C3%A9s%20pasar%20precio%20y%20coordinar%20la%20compra%3F" target="_blank" class="product-cta">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Consultar
+        </a>
+        <span class="product-availability">En stock</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cert" id="certificacion">
+  <div class="cert-grid">
+    <div>
+      <div class="section-label">Certificación</div>
+      <h2 class="cert-title">El estándar <em>más alto</em> de pureza en el mundo.</h2>
+      <p class="cert-text">
+        IFOS (International Fish Oil Standards) es el programa de certificación más exigente
+        del planeta para aceites de pescado. Solo los productos que superan los estándares
+        en pureza, frescura, potencia y sostenibilidad reciben sus 5 estrellas.
+      </p>
+      <ul class="cert-list">
+        <li>Pruebas independientes lote por lote</li>
+        <li>Análisis de metales pesados, PCBs y dioxinas</li>
+        <li>Verificación de potencia EPA/DHA</li>
+        <li>Estándares de pesca sostenible MSC</li>
+      </ul>
+    </div>
+    <div class="cert-visual">
+      <div class="cert-rotating">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <path id="circlePath" d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0"/>
+          </defs>
+          <text>
+            <textPath href="#circlePath">★ IFOS CERTIFIED ★ INTERNATIONAL FISH OIL STANDARDS ★ FIVE STAR RATING ★ </textPath>
+          </text>
+        </svg>
+      </div>
+      <div class="cert-circle">
+        <div class="cert-stars">★ ★ ★ ★ ★</div>
+        <div class="cert-big">5</div>
+        <div class="cert-label">IFOS Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="section-label">Cómo funciona</div>
+  <h2 class="section-title">De Estados Unidos<br><em>a tu puerta.</em></h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">— 01</div>
+      <div class="step-icon">✦</div>
+      <h3 class="step-title">Consultá</h3>
+      <p class="step-desc">Escribinos por WhatsApp con el producto que te interesa. Te respondemos al instante.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">— 02</div>
+      <div class="step-icon">⬡</div>
+      <h3 class="step-title">Coordinamos</h3>
+      <p class="step-desc">Confirmamos disponibilidad, forma de pago y entrega. Transferencia o efectivo.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">— 03</div>
+      <div class="step-icon">◈</div>
+      <h3 class="step-title">Verificación</h3>
+      <p class="step-desc">Te enviamos foto del lote, certificación IFOS y fecha de vencimiento del producto.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">— 04</div>
+      <div class="step-icon">→</div>
+      <h3 class="step-title">Recibís</h3>
+      <p class="step-desc">Envío a domicilio o punto de encuentro en CABA y GBA. Trazabilidad completa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="section-label" style="margin: 0 auto;">Por qué elegirnos</div>
+  <p class="testimonial-quote">
+    "No vendemos suplementos. Curamos <em>fórmulas</em> que han superado los estándares
+    más exigentes del mundo, para personas que <em>no negocian</em> con su salud."
+  </p>
+  <div class="testimonial-author">— Pure & Co</div>
+  <a href="https://wa.me/5491130372062?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20productos" target="_blank" class="btn-primary testimonial-cta">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+    </svg>
+    Hablar por WhatsApp
+  </a>
+</section>
+
+<footer id="contacto">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>pure<span style="color: var(--gold)">&</span>co</h3>
+      <p>Suplementos premium con certificación IFOS, importados directamente desde Estados Unidos. Pureza verificada, resultados reales.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Catálogo</h4>
+      <ul>
+        <li><a href="#productos">Magnesio Glicinato</a></li>
+        <li><a href="#productos">Omega-3 Alaska</a></li>
+        <li><a href="#productos">Vitamina D3 + K2</a></li>
+        <li><a href="#productos">Multi Colágeno</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#certificacion">Certificación IFOS</a></li>
+        <li><a href="#proceso">Envíos</a></li>
+        <li><a href="https://wa.me/5491130372062?text=Hola!%20Tengo%20una%20consulta%20sobre%20garant%C3%ADa" target="_blank">Garantía</a></li>
+        <li><a href="https://wa.me/5491130372062?text=Hola!%20Tengo%20una%20pregunta" target="_blank">Preguntas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/5491130372062" target="_blank">WhatsApp: +54 9 11 3037-2062</a></li>
+        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+        <li><a href="mailto:hola@pureandco.com">hola@pureandco.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 Pure & Co. Todos los derechos reservados.</div>
+    <div>Importados de USA · Certificados IFOS</div>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.querySelector('.cursor');
+  const ring = document.querySelector('.cursor-ring');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('button, a, .product-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // Cards reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('in-view');
+        }, i * 100);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+
+  // Mouse-follow gradient
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', x + '%');
+      card.style.setProperty('--y', y + '%');
+    });
+  });
+
+  // CARRUSEL
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    const prevBtn = carousel.querySelector('[data-prev]');
+    const nextBtn = carousel.querySelector('[data-next]');
+    const counter = carousel.querySelector('.current');
+    const total = slides.length;
+    let current = 0;
+
+    function update() {
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      if (counter) counter.textContent = current + 1;
+    }
+
+    function next() {
+      current = (current + 1) % total;
+      update();
+    }
+
+    function prev() {
+      current = (current - 1 + total) % total;
+      update();
+    }
+
+    nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+    prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        current = i;
+        update();
+      });
+    });
+
+    // Touch swipe support
+    let startX = 0;
+    let isDragging = false;
+
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) next();
+        else prev();
+      }
+      isDragging = false;
+    }, { passive: true });
+
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+  });
+</script>
+
+</body>
+</html>
